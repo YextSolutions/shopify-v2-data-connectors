@@ -1,0 +1,25 @@
+##### shopify-v2-data-connectors
+
+
+
+shopify_shopifyParentProductUpdates
+shopify_shopifyParentProducts
+shopify_shopifyProductDeletions
+shopify_shopifyVariantImages
+shopify_shopifyVariantProductUpdates
+shopify_shopifyVariantProducts
+ENTITY LABEL
+shopify_deletedInShopify
+FIELD
+shopify_compareAtPrice
+shopify_option1
+shopify_option2
+shopify_option3
+shopify_parentProduct
+shopify_productCategory
+shopify_productType
+shopify_shopifyInventoryItemID
+shopify_shopifyInventoryPolicy
+shopify_shopifyProductRole
+shopify_taxableItem
+shopify_variants
