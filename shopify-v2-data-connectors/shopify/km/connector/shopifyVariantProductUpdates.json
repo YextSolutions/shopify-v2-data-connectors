@@ -1,0 +1,292 @@
+{
+  "$id": "shopify_shopifyVariantProductUpdates",
+  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "displayName": "Shopify Variant Product Updates",
+  "entityType": "product",
+  "source": {
+    "sourceConfig": {
+      "apiPushConfig": {
+        "dataFormat": "JSON",
+        "enabled": true
+      }
+    },
+    "baseSelector": {
+      "type": "JSON",
+      "header": "Entity Container",
+      "path": "variants"
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "id",
+        "path": "id"
+      },
+      {
+        "type": "JSON",
+        "header": "product_id",
+        "path": "product_id"
+      },
+      {
+        "type": "JSON",
+        "header": "title",
+        "path": "title"
+      },
+      {
+        "type": "JSON",
+        "header": "price",
+        "path": "price"
+      },
+      {
+        "type": "JSON",
+        "header": "sku",
+        "path": "sku"
+      },
+      {
+        "type": "JSON",
+        "header": "position",
+        "path": "position"
+      },
+      {
+        "type": "JSON",
+        "header": "inventory_policy",
+        "path": "inventory_policy"
+      },
+      {
+        "type": "JSON",
+        "header": "compare_at_price",
+        "path": "compare_at_price"
+      },
+      {
+        "type": "JSON",
+        "header": "fulfillment_service",
+        "path": "fulfillment_service"
+      },
+      {
+        "type": "JSON",
+        "header": "inventory_management",
+        "path": "inventory_management"
+      },
+      {
+        "type": "JSON",
+        "header": "option1",
+        "path": "option1"
+      },
+      {
+        "type": "JSON",
+        "header": "option2",
+        "path": "option2"
+      },
+      {
+        "type": "JSON",
+        "header": "option3",
+        "path": "option3"
+      },
+      {
+        "type": "JSON",
+        "header": "created_at",
+        "path": "created_at"
+      },
+      {
+        "type": "JSON",
+        "header": "updated_at",
+        "path": "updated_at"
+      },
+      {
+        "type": "JSON",
+        "header": "taxable",
+        "path": "taxable"
+      },
+      {
+        "type": "JSON",
+        "header": "barcode",
+        "path": "barcode"
+      },
+      {
+        "type": "JSON",
+        "header": "grams",
+        "path": "grams"
+      },
+      {
+        "type": "JSON",
+        "header": "image_id",
+        "path": "image_id"
+      },
+      {
+        "type": "JSON",
+        "header": "weight",
+        "path": "weight"
+      },
+      {
+        "type": "JSON",
+        "header": "weight_unit",
+        "path": "weight_unit"
+      },
+      {
+        "type": "JSON",
+        "header": "inventory_item_id",
+        "path": "inventory_item_id"
+      },
+      {
+        "type": "JSON",
+        "header": "inventory_quantity",
+        "path": "inventory_quantity"
+      },
+      {
+        "type": "JSON",
+        "header": "old_inventory_quantity",
+        "path": "old_inventory_quantity"
+      },
+      {
+        "type": "JSON",
+        "header": "requires_shipping",
+        "path": "requires_shipping"
+      },
+      {
+        "type": "JSON",
+        "header": "admin_graphql_api_id",
+        "path": "admin_graphql_api_id"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "addColumn": {
+        "newColumnHeader": "Product Role",
+        "columnValue": "variant"
+      }
+    },
+    {
+      "addColumn": {
+        "newColumnHeader": "Price Currency [Default]",
+        "columnValue": "USD"
+      }
+    },
+    {
+      "addColumn": {
+        "newColumnHeader": "Compare at Price Currency [Default]",
+        "columnValue": "USD"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "inventoryQuantity",
+      "header": "inventory_quantity",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_compareAtPrice",
+      "header": "compare_at_price",
+      "subfieldPath": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "field": "shopify_taxableItem",
+      "header": "taxable",
+      "subfieldPath": []
+    },
+    {
+      "field": "shippingWeight",
+      "header": "weight",
+      "subfieldPath": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "field": "name",
+      "header": "title",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_shopifyInventoryPolicy",
+      "header": "inventory_policy",
+      "subfieldPath": []
+    },
+    {
+      "field": "shippingWeight",
+      "header": "weight_unit",
+      "subfieldPath": [
+        {
+          "name": "unit"
+        }
+      ]
+    },
+    {
+      "field": "shopify_shopifyInventoryItemID",
+      "header": "inventory_item_id",
+      "subfieldPath": []
+    },
+    {
+      "field": "price",
+      "header": "price",
+      "subfieldPath": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "field": "shopify_parentProduct",
+      "header": "product_id",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_option3",
+      "header": "option3",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_option1",
+      "header": "option1",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_shopifyProductRole",
+      "header": "Product Role",
+      "subfieldPath": []
+    },
+    {
+      "field": "entityId",
+      "header": "id",
+      "subfieldPath": []
+    },
+    {
+      "field": "shopify_option2",
+      "header": "option2",
+      "subfieldPath": []
+    },
+    {
+      "field": "sku",
+      "header": "sku",
+      "subfieldPath": []
+    },
+    {
+      "field": "gtin",
+      "header": "barcode",
+      "subfieldPath": []
+    },
+    {
+      "field": "price",
+      "header": "Price Currency [Default]",
+      "subfieldPath": [
+        {
+          "name": "currencyCode"
+        }
+      ]
+    },
+    {
+      "field": "shopify_compareAtPrice",
+      "header": "Compare at Price Currency [Default]",
+      "subfieldPath": [
+        {
+          "name": "currencyCode"
+        }
+      ]
+    }
+  ]
+}
