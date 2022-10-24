@@ -15,7 +15,7 @@
           }
         },
         "headers": {
-          "X-Shopify-Access-Token": "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",
+          "X-Shopify-Access-Token": "${{shopifyApiAccessToken}}",
           "X-Shopify-Api-Features": "include-presentment-prices"
         },
         "queryParams": {},
