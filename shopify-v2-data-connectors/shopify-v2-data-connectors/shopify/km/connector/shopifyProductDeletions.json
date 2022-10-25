@@ -1,0 +1,41 @@
+{
+  "$id": "shopify_shopifyProductDeletions",
+  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "displayName": "Shopify Product Deletions",
+  "entityType": "product",
+  "source": {
+    "sourceConfig": {
+      "apiPushConfig": {
+        "dataFormat": "JSON",
+        "enabled": true
+      }
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "id",
+        "path": "id"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "addColumn": {
+        "newColumnHeader": "Label",
+        "columnValue": "Deleted in Shopify"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "field": "labels",
+      "header": "Label",
+      "subfieldPath": []
+    },
+    {
+      "field": "entityId",
+      "header": "id",
+      "subfieldPath": []
+    }
+  ]
+}

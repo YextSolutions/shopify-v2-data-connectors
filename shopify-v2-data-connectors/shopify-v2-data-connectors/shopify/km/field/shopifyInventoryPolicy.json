@@ -1,0 +1,22 @@
+{
+  "$id": "shopify_shopifyInventoryPolicy",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Shopify Inventory Policy",
+  "group": "NONE",
+  "localization": "OVERRIDABLE",
+  "type": {
+    "optionType": {
+      "option": [
+        {
+          "displayName": "deny",
+          "textValue": "DENY"
+        },
+        {
+          "displayName": "continue",
+          "textValue": "CONTINUE"
+        }
+      ]
+    }
+  },
+  "typeId": "option"
+}

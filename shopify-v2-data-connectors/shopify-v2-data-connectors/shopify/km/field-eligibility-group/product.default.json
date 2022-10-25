@@ -1,0 +1,21 @@
+{
+  "$id": "shopify_product",
+  "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
+  "name": "Shopify Product",
+  "entityType": "product",
+  "fields": [
+    "shopify_compareAtPrice",
+    "shopify_option1",
+    "shopify_option2",
+    "shopify_option3",
+    "shopify_parentProduct",
+    "shopify_productCategory",
+    "shopify_productType",
+    "shopify_shopifyInventoryItemID",
+    "shopify_shopifyInventoryPolicy",
+    "shopify_shopifyProductRole",
+    "shopify_taxableItem",
+    "shopify_variants"
+  ],
+  "required": []
+}
