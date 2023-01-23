@@ -1,9 +1,10 @@
 {
-  "$id": "shopify_shopifyVariantProducts",
+  "$id": "shopifyVariants",
   "$schema": "https://schema.yext.com/config/km/connector/v3",
-  "displayName": "Shopify Variant Products",
+  "displayName": "Shopify Variants",
   "entityType": "product",
-  "sourceConfig": {
+  "source": {
+    "sourceConfig": {
       "nativeSourceConfig": {
         "source": "shopify",
         "operation": "fetchVariants",
@@ -51,11 +52,6 @@
       },
       {
         "type": "JSON",
-        "header": "compare_at_price",
-        "path": "compare_at_price"
-      },
-      {
-        "type": "JSON",
         "header": "fulfillment_service",
         "path": "fulfillment_service"
       },
@@ -68,16 +64,6 @@
         "type": "JSON",
         "header": "option1",
         "path": "option1"
-      },
-      {
-        "type": "JSON",
-        "header": "option2",
-        "path": "option2"
-      },
-      {
-        "type": "JSON",
-        "header": "option3",
-        "path": "option3"
       },
       {
         "type": "JSON",
@@ -131,26 +117,6 @@
       },
       {
         "type": "JSON",
-        "header": "presentment_prices[].price.amount",
-        "path": "presentment_prices[].price.amount"
-      },
-      {
-        "type": "JSON",
-        "header": "presentment_prices[].price.currency_code",
-        "path": "presentment_prices[].price.currency_code"
-      },
-      {
-        "type": "JSON",
-        "header": "presentment_prices[].compare_at_price.amount",
-        "path": "presentment_prices[].compare_at_price.amount"
-      },
-      {
-        "type": "JSON",
-        "header": "presentment_prices[].compare_at_price.currency_code",
-        "path": "presentment_prices[].compare_at_price.currency_code"
-      },
-      {
-        "type": "JSON",
         "header": "requires_shipping",
         "path": "requires_shipping"
       },
@@ -158,14 +124,24 @@
         "type": "JSON",
         "header": "admin_graphql_api_id",
         "path": "admin_graphql_api_id"
+      },
+      {
+        "type": "JSON",
+        "header": "option2",
+        "path": "option2"
+      },
+      {
+        "type": "JSON",
+        "header": "image_id",
+        "path": "image_id"
       }
     ]
   },
   "transforms": [
     {
       "addColumn": {
-        "newColumnHeader": "Product Role",
-        "columnValue": "variant"
+        "newColumnHeader": "currency",
+        "columnValue": "USD"
       }
     }
   ],
@@ -173,48 +149,6 @@
     {
       "field": "inventoryQuantity",
       "header": "inventory_quantity",
-      "subfieldPath": []
-    },
-    {
-      "field": "price",
-      "header": "presentment_prices[].price.amount",
-      "subfieldPath": [
-        {
-          "name": "value"
-        }
-      ]
-    },
-    {
-      "field": "shopify_taxableItem",
-      "header": "taxable",
-      "subfieldPath": []
-    },
-    {
-      "field": "price",
-      "header": "presentment_prices[].price.currency_code",
-      "subfieldPath": [
-        {
-          "name": "currencyCode"
-        }
-      ]
-    },
-    {
-      "field": "shippingWeight",
-      "header": "weight",
-      "subfieldPath": [
-        {
-          "name": "value"
-        }
-      ]
-    },
-    {
-      "field": "name",
-      "header": "title",
-      "subfieldPath": []
-    },
-    {
-      "field": "shopify_shopifyInventoryPolicy",
-      "header": "inventory_policy",
       "subfieldPath": []
     },
     {
@@ -227,8 +161,8 @@
       ]
     },
     {
-      "field": "shopify_compareAtPrice",
-      "header": "presentment_prices[].compare_at_price.amount",
+      "field": "price",
+      "header": "price",
       "subfieldPath": [
         {
           "name": "value"
@@ -236,24 +170,18 @@
       ]
     },
     {
-      "field": "shopify_parentProduct",
+      "field": "parentProduct",
       "header": "product_id",
       "subfieldPath": []
     },
     {
-      "field": "shopify_option3",
-      "header": "option3",
-      "subfieldPath": []
-    },
-    {
-      "field": "shopify_option1",
-      "header": "option1",
-      "subfieldPath": []
-    },
-    {
-      "field": "shopify_shopifyProductRole",
-      "header": "Product Role",
-      "subfieldPath": []
+      "field": "shippingWeight",
+      "header": "weight",
+      "subfieldPath": [
+        {
+          "name": "value"
+        }
+      ]
     },
     {
       "field": "entityId",
@@ -261,8 +189,8 @@
       "subfieldPath": []
     },
     {
-      "field": "shopify_option2",
-      "header": "option2",
+      "field": "name",
+      "header": "title",
       "subfieldPath": []
     },
     {
@@ -271,27 +199,13 @@
       "subfieldPath": []
     },
     {
-      "field": "shopify_compareAtPrice",
-      "header": "presentment_prices[].compare_at_price.currency_code",
+      "field": "price",
+      "header": "currency",
       "subfieldPath": [
         {
           "name": "currencyCode"
         }
       ]
-    },
-    {
-      "field": "gtin",
-      "header": "barcode",
-      "subfieldPath": []
     }
-  ],
-  "scheduleConfig": {
-    "customSchedule": {
-      "timeZone": "America/New_York",
-      "startDate": "2022-10-21",
-      "startTime": "00:00",
-      "frequencyType": "DAILY"
-    },
-    "runMode": "DEFAULT"
-  }
+  ]
 }
