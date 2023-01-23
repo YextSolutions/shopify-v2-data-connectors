@@ -207,5 +207,14 @@
         }
       ]
     }
-  ]
+  ],
+   "scheduleConfig": {
+    "customSchedule": {
+      "timeZone": "America/New_York",
+      "startDate": "2022-10-22",
+      "startTime": "00:00",
+      "frequencyType": "DAILY"
+    },
+    "runMode": "DEFAULT"
+  }
 }
