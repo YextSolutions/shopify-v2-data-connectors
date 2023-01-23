@@ -3,9 +3,7 @@
   "$schema": "https://schema.yext.com/config/km/connector/v3",
   "displayName": "Shopify Variant Products",
   "entityType": "product",
-  "source": {
-    "sourceConfig": {
-      "sourceConfig": {
+  "sourceConfig": {
       "nativeSourceConfig": {
         "source": "shopify",
         "operation": "fetchVariantProducts",
@@ -14,11 +12,6 @@
           "shopifyStoreName": "${{shopifyStoreName}}"
         }
       }
-    },
-    "baseSelector": {
-      "type": "JSON",
-      "header": "Entity Container",
-      "path": "products[].variants[]"
     },
     "selectors": [
       {
