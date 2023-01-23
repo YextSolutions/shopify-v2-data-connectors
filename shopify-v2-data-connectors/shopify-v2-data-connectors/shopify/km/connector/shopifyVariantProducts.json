@@ -6,7 +6,7 @@
   "sourceConfig": {
       "nativeSourceConfig": {
         "source": "shopify",
-        "operation": "fetchVariantProducts",
+        "operation": "fetchVariants",
         "inputs": {
           "shopifyApiAccessToken": "${{shopifyApiAccessToken}}",
           "shopifyStoreName": "${{shopifyStoreName}}"
