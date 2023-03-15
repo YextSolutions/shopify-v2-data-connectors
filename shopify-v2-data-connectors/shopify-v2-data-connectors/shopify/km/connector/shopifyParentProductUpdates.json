@@ -203,7 +203,7 @@
     {
       "addColumn": {
         "newColumnHeader": "Base URL",
-        "columnValue": "https://adriennes-flower-boutique.myshopify.com/products/"
+        "columnValue": "https://${{shopifyStoreName}}.myshopify.com/products/"
       }
     },
     {
