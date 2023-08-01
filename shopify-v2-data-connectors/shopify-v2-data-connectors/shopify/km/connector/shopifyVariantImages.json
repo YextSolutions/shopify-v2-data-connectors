@@ -1,106 +1,112 @@
 {
-  "$id": "shopify_shopifyVariantImages",
-  "$schema": "https://schema.yext.com/config/km/connector/v3",
-  "displayName": "Shopify Variant Images",
-  "entityType": "product",
-  "source": {
-    "sourceConfig": {
-      "nativeSourceConfig": {
-        "source": "shopify",
-        "operation": "fetchVariantImages",
-        "inputs": {
-          "shopifyApiAccessToken": "${{shopifyApiAccessToken}}",
-          "shopifyStoreName": "${{shopifyStoreName}}"
-        }
-      }
+    "$id": "shopify_shopifyVariantImages",
+    "$schema": "https://schema.yext.com/config/km/connector/v4",
+    "displayName": "Shopify Variant Images",
+    "entityTypes": [
+        "product"
+    ],
+    "source": {
+        "sourceConfig": {
+            "nativeSourceConfig": {
+                "source": "shopify",
+                "operation": "fetchVariantImages",
+                "inputs": {
+                    "shopifyApiAccessToken": "${{shopifyApiAccessToken}}",
+                    "shopifyStoreName": "${{shopifyStoreName}}"
+                }
+            }
+        },
+        "selectors": [
+            {
+                "type": "JSON",
+                "header": "id",
+                "path": "id"
+            },
+            {
+                "type": "JSON",
+                "header": "product_id",
+                "path": "product_id"
+            },
+            {
+                "type": "JSON",
+                "header": "position",
+                "path": "position"
+            },
+            {
+                "type": "JSON",
+                "header": "created_at",
+                "path": "created_at"
+            },
+            {
+                "type": "JSON",
+                "header": "updated_at",
+                "path": "updated_at"
+            },
+            {
+                "type": "JSON",
+                "header": "width",
+                "path": "width"
+            },
+            {
+                "type": "JSON",
+                "header": "height",
+                "path": "height"
+            },
+            {
+                "type": "JSON",
+                "header": "src",
+                "path": "src"
+            },
+            {
+                "type": "JSON",
+                "header": "variant_ids",
+                "path": "variant_ids"
+            },
+            {
+                "type": "JSON",
+                "header": "admin_graphql_api_id",
+                "path": "admin_graphql_api_id"
+            }
+        ]
     },
-    "selectors": [
-      {
-        "type": "JSON",
-        "header": "id",
-        "path": "id"
-      },
-      {
-        "type": "JSON",
-        "header": "product_id",
-        "path": "product_id"
-      },
-      {
-        "type": "JSON",
-        "header": "position",
-        "path": "position"
-      },
-      {
-        "type": "JSON",
-        "header": "created_at",
-        "path": "created_at"
-      },
-      {
-        "type": "JSON",
-        "header": "updated_at",
-        "path": "updated_at"
-      },
-      {
-        "type": "JSON",
-        "header": "width",
-        "path": "width"
-      },
-      {
-        "type": "JSON",
-        "header": "height",
-        "path": "height"
-      },
-      {
-        "type": "JSON",
-        "header": "src",
-        "path": "src"
-      },
-      {
-        "type": "JSON",
-        "header": "variant_ids",
-        "path": "variant_ids"
-      },
-      {
-        "type": "JSON",
-        "header": "admin_graphql_api_id",
-        "path": "admin_graphql_api_id"
-      }
-    ]
-  },
-  "transforms": [
-    {
-      "splitIntoRows": {
-        "inputHeader": "variant_ids",
-        "delimiter": ","
-      }
-    }
-  ],
-  "mappings": [
-    {
-      "field": "primaryPhoto",
-      "header": "src",
-      "subfieldPath": [
+    "transforms": [
         {
-          "name": "image"
+            "splitIntoRows": {
+                "inputHeader": "variant_ids",
+                "delimiter": ","
+            }
+        }
+    ],
+    "mappings": [
+        {
+            "field": "primaryPhoto",
+            "header": "src",
+            "subfieldPath": [
+                {
+                    "name": "image"
+                },
+                {
+                    "name": "url"
+                }
+            ]
         },
         {
-          "name": "url"
+            "field": "entityId",
+            "header": "variant_ids",
+            "subfieldPath": []
         }
-      ]
+    ],
+    "scheduleConfig": {
+        "customSchedule": {
+            "timeZone": "America/New_York",
+            "startDate": "2022-10-21",
+            "startTime": "00:00",
+            "frequencyType": "DAILY"
+        },
+        "runMode": "DEFAULT"
     },
-    {
-      "field": "entityId",
-      "header": "variant_ids",
-      "subfieldPath": []
+    "comprehensiveModeConfig": {
+        "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+        "actionOnMissingEntities": "DELETE"
     }
-  ],
-  "scheduleConfig": {
-    "customSchedule": {
-      "timeZone": "America/New_York",
-      "startDate": "2022-10-21",
-      "startTime": "00:00",
-      "frequencyType": "DAILY"
-    },
-    "runMode": "DEFAULT"
-  }
 }

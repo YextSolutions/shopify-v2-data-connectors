@@ -1,41 +1,47 @@
 {
-  "$id": "shopify_shopifyProductDeletions",
-  "$schema": "https://schema.yext.com/config/km/connector/v3",
-  "displayName": "Shopify Product Deletions",
-  "entityType": "product",
-  "source": {
-    "sourceConfig": {
-      "apiPushConfig": {
-        "dataFormat": "JSON",
-        "enabled": true
-      }
+    "$id": "shopify_shopifyProductDeletions",
+    "$schema": "https://schema.yext.com/config/km/connector/v4",
+    "displayName": "Shopify Product Deletions",
+    "entityTypes": [
+        "product"
+    ],
+    "source": {
+        "sourceConfig": {
+            "apiPushConfig": {
+                "dataFormat": "JSON",
+                "enabled": true
+            }
+        },
+        "selectors": [
+            {
+                "type": "JSON",
+                "header": "id",
+                "path": "id"
+            }
+        ]
     },
-    "selectors": [
-      {
-        "type": "JSON",
-        "header": "id",
-        "path": "id"
-      }
-    ]
-  },
-  "transforms": [
-    {
-      "addColumn": {
-        "newColumnHeader": "Label",
-        "columnValue": "Deleted in Shopify"
-      }
+    "transforms": [
+        {
+            "addColumn": {
+                "newColumnHeader": "Label",
+                "columnValue": "Deleted in Shopify"
+            }
+        }
+    ],
+    "mappings": [
+        {
+            "field": "labels",
+            "header": "Label",
+            "subfieldPath": []
+        },
+        {
+            "field": "entityId",
+            "header": "id",
+            "subfieldPath": []
+        }
+    ],
+    "comprehensiveModeConfig": {
+        "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+        "actionOnMissingEntities": "DELETE"
     }
-  ],
-  "mappings": [
-    {
-      "field": "labels",
-      "header": "Label",
-      "subfieldPath": []
-    },
-    {
-      "field": "entityId",
-      "header": "id",
-      "subfieldPath": []
-    }
-  ]
 }
